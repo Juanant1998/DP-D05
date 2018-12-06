@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <!-- 
- * tiles_es.xml
+ * tiles.xml
  *
  * Copyright (C) 2018 Universidad de Sevilla
  * 
@@ -17,7 +17,7 @@
 <tiles-definitions>
 
 	<definition name="master.page" template="/views/master-page/layout.jsp">
-		<put-attribute name="title" value="" />
+		<put-attribute name="title" value="Your applications are:" />
 		<put-attribute name="header" value="/views/master-page/header.jsp" />
 		<put-attribute name="body" value="" />
 		<put-attribute name="footer" value="/views/master-page/footer.jsp" />
