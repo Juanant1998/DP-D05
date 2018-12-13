@@ -36,11 +36,6 @@
     
     <security:authorize access="hasRole('HANDYWORKER')">
 		<display:column>
-			<a href="application/create.do?appId=${row.id}">
-			<spring:message code="application.edit"/>
-			</a>
-		</display:column>
-		<display:column>
 			<a href="application/edit.do?appId=${row.id}">
 			<spring:message code="application.edit"/>
 			</a>

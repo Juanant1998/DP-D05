@@ -8,12 +8,6 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
 
-
-<%--<p><spring:message code="welcome.greeting.prefix" /> ${name}<spring:message code="welcome.greeting.suffix" /></p>
-
-<p><spring:message code="welcome.greeting.current.time" /> ${moment}</p> 
---%>
-
 	
 	<form:form action="finder/handyworker/edit.do" modelAttribute="finder">
 		

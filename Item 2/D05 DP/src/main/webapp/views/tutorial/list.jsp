@@ -12,18 +12,7 @@
 
 	<spring:message code="tutorial.title" var= "titleHeader" />
 	<display:column property="title" title="${titleHeader}" sortable="false" />
-	
-	<spring:message code="tutorial.lastUpdate" var= "lastUpdateHeader" />
-	<display:column property="lastUpdate" title="${lastUpdateHeader}" sortable="false" format= "{0,date,dd/MM/yyyy HH:mm}" />
-	
-	<spring:message code="tutorial.summary" var= "summaryHeader" />
-	<display:column property="summary" title="${summaryHeader}" sortable="false" />
-	
-	<spring:message code="tutorial.picture" var= "pictureHeader" />
-	<display:column property="picture" title="${pictureHeader}" sortable="false" />
-	
-	<spring:message code="tutorial.sections" var= "sectionsHeader" />
-	<display:column property="sections" title="${sectionsHeader}" sortable="false" />
+
 	
 	<spring:message code="tutorial.handyworker" var= "handyworkerHeader" />
 	<display:column property="handyworker" title="${handyworkerHeader}" sortable="false" />

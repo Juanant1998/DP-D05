@@ -26,14 +26,14 @@
 		<form:label path="summary">
 			<spring:message code="tutorial.summary" />:
 		</form:label>
-		<form:input path="summary" />
+		<form:textarea path="summary" />
 		<form:errors cssClass="error" path="summary" />
 		<br />		
 		
 		<form:label path="picture">
 			<spring:message code="tutorial.picture" />:
 		</form:label>
-		<form:input path="picture" />
+		<form:textarea path="picture" />
 		<form:errors cssClass="error" path="picture" />
 		<br />	
 		

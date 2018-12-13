@@ -73,13 +73,17 @@
 		<form:hidden path="comments"/>
 	
 		
-		<form:label path="status">
-			<spring:message code="application.status" />:
-		</form:label>
-		<form:input path="status" />
-		<form:errors cssClass="error" path="status" />
-		<br />
-		
+<form:label path="status">
+		<spring:message code="application.status" />
+	</form:label>
+
+	<form:select path="status">
+		<form:option label="----" value="0" />
+		<form:options items="${status}" itemLabel="title" itemValue="id" />
+	</form:select>
+
+	<form:errors cssClass="error" path="status" />
+	<br />
 		
 		<form:label path="creditCard">
 		    <spring:message code="application.creditCard" />:

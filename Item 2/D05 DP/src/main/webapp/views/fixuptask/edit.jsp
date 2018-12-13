@@ -70,8 +70,7 @@
 		<input type="submit" name = "save" value = "<spring:message code ="fixuptask.save" /> " />
 		<spring:message code ="fixuptask.cancel" var="cancel" />
 		<input type="button" name="cancel" value="${cancel}" onclick="javascript:relativeRedir('fixuptask/customer/list.do?customerId=${customerId}');" />
-	
-			<input type="button" name="delete" value="${delete}"/>
+
 	
 	</form:form>
 	
