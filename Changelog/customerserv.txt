@@ -1,0 +1,67 @@
+	///A
+	public Collection<Endorsement> getEndorsments(){
+		Assert.isTrue(!actorservice.isActualActorBanned());
+		
+		Collection<Endorsement>  res = new ArrayList<>();
+		Customer actual = uas.getCustomerByUserAccount(LoginService.getPrincipal());
+		Assert.isTrue(!actual.getIsBanned());
+		
+		Collection<Endorsement> prueba =endorsementService.findAll();
+for(Endorsement a :endorsementService.findAll()){
+	if(a.getSender().equals(actual)){
+		res.add(a);
+	}
+		
+}
+			
+	return res;	
+	}
+	public Endorsement getEndorsement(int id){
+		Assert.isTrue(!actorservice.isActualActorBanned());
+		Customer actual = uas.getCustomerByUserAccount(LoginService.getPrincipal());
+		
+		Endorsement  res =null;
+		
+		
+		for(Endorsement a :endorsementService.findAll()){
+			if(a.getSender().equals(actual)&& a.getId()==id){
+				res=a;
+			}
+			
+			
+		}
+		return res;
+		}
+public  Endorsement createEndorsement(HandyWorker handy,Endorsement endor,FixUpTask n ){
+	Assert.isTrue(!actorservice.isActualActorBanned());
+	
+	Customer actual = uas.getCustomerByUserAccount(LoginService.getPrincipal());
+	checkAuthority();
+Endorsement  res = new Endorsement();
+	
+	if (handyWorkerRepository.getFixUpTaskByHandyWorker(handy.getUserAccount()).contains(n)){
+	    res.setComments(endor.getComments());
+	    res.setEndorser(handy);
+	    res.setMoment(LocalDate.now().toDate());
+	    res.setSender(actual);
+	   
+		
+	}
+	  Endorsement  result =	endorsementService.save(res);
+	return result;
+	
+
+}
+public Endorsement updateEndorsement(Endorsement endor){
+    Assert.isTrue(!actorservice.isActualActorBanned());
+	checkAuthority();
+    Assert.notNull(endor);
+	Endorsement  result =this.endorsementService.save(endor);
+	return result;	
+}
+public void  deleteEndorsement(Endorsement endor){
+	Assert.isTrue(!actorservice.isActualActorBanned());
+	this.endorsementService.delete(endor);
+	}
+	
+}

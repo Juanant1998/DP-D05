@@ -1,0 +1,71 @@
+	public String generateTicker() {
+	    byte[] array = new byte[6]; // length is bounded by 7
+	    new Random().nextBytes(array);
+	    String generatedString = new String(array, Charset.forName("UTF-8"));
+	 
+	    return generatedString.toUpperCase();
+	}
+	public List<String> getBadWords(){
+		SystemConfig configuration = administratorRepository.returnSystemConfig().get(0);
+		return configuration.getBadWords();
+	}
+	
+	public List<String> addBadWord(String word){
+		SystemConfig configuration = administratorRepository.returnSystemConfig().get(0);
+		configuration.getBadWords().add(word);
+		return configuration.getBadWords();
+	}
+	
+	public void deleteBadWord(String word){
+		SystemConfig configuration = administratorRepository.returnSystemConfig().get(0);
+		configuration.getBadWords().remove(word);
+	}
+	
+	public List<String> getGoodWords(){
+		SystemConfig configuration = administratorRepository.returnSystemConfig().get(0);
+		return configuration.getBadWords();
+	}
+	
+	public List<String> addGoodWord(String word){
+		SystemConfig configuration = administratorRepository.returnSystemConfig().get(0);
+		configuration.getGoodWords().add(word);
+		return configuration.getGoodWords();
+	}
+	
+	public void deleteGoodWord(String word){
+		SystemConfig configuration = administratorRepository.returnSystemConfig().get(0);
+		configuration.getGoodWords().remove(word);
+	}
+	
+	public Map<Actor, Score> calculateAllActorsScores(){ //void
+		Map<Actor, Score> allscores = new HashMap<Actor, Score>();
+		List<Endorsement> endorsements = (List<Endorsement>) es.findAll();
+		
+		for(Endorsement e: endorsements){
+			Double newscore = e.calculateScore().getNumericScore();
+			if(allscores.containsKey(e.getEndorser())){
+				Double oldscore = allscores.get(e.getEndorser()).getNumericScore();
+				Double oldplusnew = (oldscore + newscore)/2;
+				
+				Score putscore = new Score();
+				putscore.setNumericScore(oldplusnew);
+				
+				allscores.put(e.getEndorser(), putscore);
+
+			} else {
+				
+				Score putscore = new Score();
+				putscore.setNumericScore(newscore);
+				
+				allscores.put(e.getEndorser(), putscore);
+				
+			}
+		}
+		
+		
+		
+		
+		return allscores;
+	}
+
+}
